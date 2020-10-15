@@ -1,0 +1,17 @@
+{
+  "name": "fun-with-node",
+  "version": "1.0.0",
+  "main": "url.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {},
+  "description": "Basics of redux, based on Stephen Grider's Udemy course."
+}
