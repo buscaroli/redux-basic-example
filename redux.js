@@ -5,14 +5,16 @@
 
 // Based on a Lecture from Stephen Grider, from his course on Udemy.
 
+// Creating a store for an Insurance Company.
+// The store tracks: The claims, the new policies and the available funds.
 
 import { createStore, combineReducers } from 'redux'
 
-// Action Creators
+// Action Creators.
 // Actio creators are functions that return actions.
 // Actions are objects that have two specific properties:
-// type
-// payload
+// - type
+// - payload
 
 const createPolicy = (name, amount) => {
     return ({
@@ -43,13 +45,13 @@ const claimPolicy = (name, amount) => {
     })
 }
 
-// REDUCERS
+// REDUCERS.
 // Reducers are (should be as there is nothing to prevent you from using
 // impure functions but beware of unexpected and difficult to track bugs!)
 // that receive an action and modify the state of the store based on the 
 // action's type.
 // The first time a reducer is used it needs to have a value for the 
-// parametert that he has been given, undefined will raise an error; be
+// parameter that he has been given, undefined will raise an error; be
 // sure to give a default value as in the code below, this value will be
 // used when the reducer is called for the very first time.
 
@@ -91,15 +93,14 @@ const claims = (listOfClaims = [], action) => {
 }
 
 
-
 // The reducers need to be given as an input to the combineReducers function,
 // this way, every time the dispatch function is called with an action-creator
-// the action is passed to ALL the reducers that will ament the store state 
-// depending on the action type, as appropriate (eg if a new policy is created
-// we need to call to reducers: policies and billing, as they both contain the 
-// 'CREATE_CLAIM' type, so the name of the client will be added to the 
-// 'listOfpolicies' of the store and the money will be added to the 'funds' of
-// the store.)
+// the action is passed to ALL the reducers that will update the state of the 
+// store depending on the action type, as appropriate (eg if a new policy is 
+// created we need to call to reducers: policies and billing, as they both 
+// contain the 'CREATE_CLAIM' type, so the name of the client will be added to
+// the 'listOfpolicies' of the store and the money will be added to the 'funds'
+// of the store).
 const departments = combineReducers ({
     policies,
     claims,
@@ -108,7 +109,7 @@ const departments = combineReducers ({
 
 const store = createStore(departments)
 
-// We use dispatch every time we want to work on the store.
+// We use the 'dispatch' method every time we want to work on the store.
 store.dispatch(createPolicy('Matt', 250))
 store.dispatch(createPolicy('Mel', 240))
 console.log(store.getState())
